@@ -103,7 +103,6 @@ jQuery(document).ready(function () {
   nice_tz_select.on('change.plugin_timezone', function(e, data) {
       var localized = jQuery('#%(_id)s option:selected').data('localized');
       var placeholder = '#plugin_timezone_localized';
-      console.log('z', (!placeholder.length))
       if (!jQuery(placeholder).length) nice_tz_select.after('<span id="plugin_timezone_localized" style="display: block" />');
       if (typeof (data) !== 'undefined') {
         localized = 'auto: ' + localized;
