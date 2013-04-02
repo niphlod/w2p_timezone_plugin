@@ -1,6 +1,6 @@
 Timezone handling simplified for web2py
 ===================
-Since 2.4.5 web2py ships with all IS_DATE* validators capable of accepting a timezone parameter.
+Since 2.4.5 web2py ships with IS_DATE* validators that accept a timezone parameter.
 This is nice 'cause you can transparently treat all dates in your backend as UTC and transform them back
 and forth to the client.
 This plugin offers:
