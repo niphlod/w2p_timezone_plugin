@@ -13,13 +13,12 @@ from gluon.dal import Field
 
 TZSETS = [
       ('Etc/GMT+12',                    '(UTC-12:00) International Date Line West'),
-      ('Pacific/Majuro',                '(UTC+12:00) Coordinated Universal Time+12'),
       ('Pacific/Pago_Pago',             '(UTC-11:00) Coordinated Universal Time-11'),
-      ('America/Adak',                  '(UTC-09:00) Adak'),
       ('Pacific/Honolulu',              '(UTC-10:00) Hawaii'),
       ('Pacific/Marquesas',             '(UTC-09:30) Marquesas'),
       ('Pacific/Gambier',               '(UTC-09:00) Gambier'),
       ('America/Anchorage',             '(UTC-09:00) Alaska'),
+      ('America/Adak',                  '(UTC-09:00) Adak'),
       ('America/Los_Angeles',           '(UTC-08:00) Pacific Time (US & Canada)'),
       ('Pacific/Pitcairn',              '(UTC-08:00) Pitcairn'),
       ('America/Phoenix',               '(UTC-07:00) Arizona'),
@@ -84,6 +83,7 @@ TZSETS = [
       ('Asia/Kamchatka',                '(UTC+12:00) Magadan'),
       ('Pacific/Auckland',              '(UTC+12:00) Auckland, Wellington'),
       ('Pacific/Tarawa',                '(UTC+12:00) Coordinated Universal Time+12'),
+      ('Pacific/Majuro',                '(UTC+12:00) Majuro'),
       ('Pacific/Chatham',               '(UTC+12:45) Chatam'),
       ('Pacific/Tongatapu',             '(UTC+13:00) Nuku\'alofa'),
       ('Pacific/Apia',                  '(UTC+13:00) Samoa'),
