@@ -143,6 +143,7 @@ jQuery(document).ready(function () {
 });
 """ % URL()
     if current.request.post_vars.timezone:
-        if current.request.post_vars.timezone in TZSETS:
-            current.session.plugin_timezone_tz = current.request.post_vars.timezone
+        if current.request.post_vars.timezone in [tz[0] for tz in TZSETS]:
+            if not current.session.plugin_timezone_tz:
+                current.session.plugin_timezone_tz = current.request.post_vars.timezone
     return SCRIPT(script)
