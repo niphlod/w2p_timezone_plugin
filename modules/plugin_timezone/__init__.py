@@ -90,16 +90,22 @@ TZSETS = [
       ('Pacific/Kiritimati',            '(UTC+14:00) Kiritimati')
 ]
 
+TZDICT = dict((tzn[0], 1) for tzn in TZSETS)
+
 def tz_nice_detector_widget(field, value, **attributes):
-    nice_TZSETS = []
+    options = []
     for tzn in TZSETS:
         #retrieve offset
         localized = datetime.datetime.now(pytz.timezone(tzn[0]))
-        nice_TZSETS.append((tzn[0], tzn[1], localized.strftime('%Y-%m-%d %H:%M')))
+        options.append(
+            OPTION(tzn[1], _value=tzn[0],
+                   data=dict(localized=localized.strftime('%Y-%m-%d %H:%M'))
+                   )
+        )
+
 
     _id = '%s_%s' % (field._tablename, field.name)
     _name = field.name
-    options = [OPTION(tzn[1], _value=tzn[0], data=dict(localized=tzn[2])) for tzn in nice_TZSETS]
     if 'autodetect' in attributes and attributes.pop('autodetect') is True:
         current.response.files.append(URL('static', 'plugin_timezone/jstz.min.js'))
         script = """
@@ -143,7 +149,8 @@ jQuery(document).ready(function () {
 });
 """ % URL()
     if current.request.post_vars.timezone:
-        if current.request.post_vars.timezone in [tz[0] for tz in TZSETS]:
+        if current.request.post_vars.timezone in TZDICT:
             if not current.session.plugin_timezone_tz:
                 current.session.plugin_timezone_tz = current.request.post_vars.timezone
+
     return SCRIPT(script)
