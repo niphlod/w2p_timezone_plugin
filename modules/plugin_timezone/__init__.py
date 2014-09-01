@@ -97,16 +97,21 @@ def tz_nice_detector_widget(field, value, **attributes):
     for tzn in TZSETS:
         #retrieve offset
         localized = datetime.datetime.now(pytz.timezone(tzn[0]))
+        opt_attributes = {'_value' : tzn[0]}
+        if tzn[0] == value:
+            opt_attributes['_selected'] = ''
         options.append(
-            OPTION(tzn[1], _value=tzn[0],
-                   data=dict(localized=localized.strftime('%Y-%m-%d %H:%M'))
+            OPTION(tzn[1],
+                   data=dict(localized=localized.strftime('%Y-%m-%d %H:%M')),
+                   **opt_attributes
                    )
         )
 
 
     _id = '%s_%s' % (field._tablename, field.name)
     _name = field.name
-    if 'autodetect' in attributes and attributes.pop('autodetect') is True:
+    autodetect = 'autodetect' in attributes and attributes.pop('autodetect') is True
+    if autodetect and not value:
         current.response.files.append(URL('static', 'plugin_timezone/jstz.min.js'))
         script = """
 jQuery(document).ready(function () {
