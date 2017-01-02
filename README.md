@@ -100,7 +100,7 @@ definition
 
 ```python
 import pytz
-user_timezone = auth.user.user_timezone_timezone or 'UTC'
+user_timezone = auth.user.user_timezone or 'UTC'
 
 db.define_table('sometable',
   Field('appointment', 'datetime', 
